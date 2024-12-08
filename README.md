@@ -79,37 +79,3 @@ Jenkins to communicate with Terraform, we need the plugin
 
 Pipeline- GUI  or you can write a file with the name Jenkinsfile
 
-stages
-   stage 1: Git Checkout
-   stage 2: Terraform initilization
-   stage 3: Terraform plan
-   stage 4: Terraform apply --auto-approve
-   
-pipeline {
-    agent any
-    tools {
-     terraform 'terraform'
-  }
-    stages {
-        stage('Git Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/mailrajeshsre/project-1.git'
-            }
-        }
-        stage('Terraform Initlization') {
-            steps {
-                sh 'terraform init'
-            }
-        }
-        stage('Terraform plan') {
-            steps {
-                sh 'terraform plan'
-            }
-        }
-        stage('Terraform Provisioning') {
-            steps {
-                sh 'terraform apply --auto-approve'
-            }
-        }
-    }
-}
